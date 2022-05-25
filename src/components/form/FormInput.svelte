@@ -1,4 +1,4 @@
-<script type="ts">
+<script lang="ts">
   export let label: string = "";
   export let inputType: "text" | "email" | "password" = "text";
   export let inputPlaceholder: string = "";

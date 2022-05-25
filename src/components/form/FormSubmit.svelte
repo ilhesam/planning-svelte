@@ -1,4 +1,4 @@
-<script type="ts">
+<script lang="ts">
   export let text: string = "Submit";
   export let width: 100 | 50 | "auto" = "auto";
 </script>
