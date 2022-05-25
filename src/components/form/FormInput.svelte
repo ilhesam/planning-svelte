@@ -2,7 +2,7 @@
   export let label: string = "";
   export let inputType: "text" | "email" | "password" = "text";
   export let inputPlaceholder: string = "";
-  export let autoComplete: true | false = false;
+  export let autoComplete: boolean = false;
 </script>
 
 <div class="form-group mb-3">

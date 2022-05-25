@@ -1,5 +1,5 @@
 <script type="ts">
-  export let centerItems: true | false = false;
+  export let centerItems: boolean = false;
 </script>
 
 <div class={`page ${centerItems ? "page-center" : ""}`}>
