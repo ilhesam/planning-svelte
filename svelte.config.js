@@ -1,15 +1,19 @@
 import adapter from '@sveltejs/adapter-auto';
 import preprocess from 'svelte-preprocess';
+import { resolve } from 'path';
 
 const config = {
-	preprocess: [
-		preprocess({
-			typescript: true
-		})
-	],
+	preprocess: preprocess(),
 
 	kit: {
-		adapter: adapter()
+		adapter: adapter(),
+		vite: {
+			resolve: {
+				alias: {
+					$components: resolve('./src/components')
+				}
+			}
+		}
 	}
 };
 

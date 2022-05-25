@@ -10,7 +10,7 @@
     "sourceMap": true,
     "strict": true,
     "paths": {
-      "@components": ["src/components"]
+      "$components": ["src/components"]
     }
   },
   "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js", "src/**/*.svelte"]

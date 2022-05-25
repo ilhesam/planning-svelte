@@ -8,7 +8,7 @@
     FormFooter,
     FormSubmit,
     Page,
-  } from "@components";
+  } from "$components";
 </script>
 
 <Page centerItems={true}>
