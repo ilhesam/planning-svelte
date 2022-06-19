@@ -6,7 +6,7 @@
   <div class="row g-2 align-items-center">
     <div class="col">
       <div class="page-pretitle">Overview</div>
-      <h1 class="page-title">Plans</h1>
+      <h1 class="page-title">Your Targets</h1>
     </div>
     <div class="col-12 col-md-auto ms-auto d-print-none">
       <a href="/plans" class="btn btn-primary">+ Add new plan</a>
