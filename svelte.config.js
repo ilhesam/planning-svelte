@@ -12,6 +12,7 @@ const config = {
 				alias: {
 					$components: resolve('./src/components'),
 					$api: resolve('./src/services/api'),
+					$utils: resolve('./src/utils'),
 				}
 			}
 		}

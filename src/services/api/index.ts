@@ -90,7 +90,7 @@ export class TargetsService {
       body?: SearchTargetRequest;
     } = {} as any,
     options: IRequestOptions = {}
-  ): Promise<TargetIListResult> {
+  ): Promise<TargetResponseIListResult> {
     return new Promise((resolve, reject) => {
       let url = basePath + '/API/Targets/Search';
 
@@ -202,10 +202,7 @@ export interface IdRequest {
 
 export interface SearchTargetRequest {
   /**  */
-  parents?: boolean;
-
-  /**  */
-  parentId?: string;
+  parentIds?: string[];
 }
 
 export interface Target {
@@ -228,51 +225,13 @@ export interface Target {
   priority?: number;
 
   /**  */
+  metric?: string;
+
+  /**  */
   progress?: number;
 
   /**  */
   goal?: number;
-}
-
-export interface TargetIListResult {
-  /**  */
-  pageSize?: number;
-
-  /**  */
-  totalPages?: number;
-
-  /**  */
-  pageNumber?: number;
-
-  /**  */
-  totalCount?: number;
-
-  /**  */
-  hasPrevious?: boolean;
-
-  /**  */
-  hasNext?: boolean;
-
-  /**  */
-  data?: Target[];
-
-  /**  */
-  errors?: Error[];
-
-  /**  */
-  debug?: any | null[];
-
-  /**  */
-  traceId?: string;
-
-  /**  */
-  sessionId?: string;
-
-  /**  */
-  duration?: number;
-
-  /**  */
-  code?: number;
 }
 
 export interface TargetIResult {
@@ -318,7 +277,59 @@ export interface TargetRequest {
   priority?: number;
 
   /**  */
+  metric?: string;
+
+  /**  */
   goal?: number;
+}
+
+export interface TargetResponse {
+  /**  */
+  mainTarget?: Target;
+
+  /**  */
+  subTargets?: Target[];
+}
+
+export interface TargetResponseIListResult {
+  /**  */
+  pageSize?: number;
+
+  /**  */
+  totalPages?: number;
+
+  /**  */
+  pageNumber?: number;
+
+  /**  */
+  totalCount?: number;
+
+  /**  */
+  hasPrevious?: boolean;
+
+  /**  */
+  hasNext?: boolean;
+
+  /**  */
+  data?: TargetResponse[];
+
+  /**  */
+  errors?: Error[];
+
+  /**  */
+  debug?: any | null[];
+
+  /**  */
+  traceId?: string;
+
+  /**  */
+  sessionId?: string;
+
+  /**  */
+  duration?: number;
+
+  /**  */
+  code?: number;
 }
 
 export interface Timeline {
