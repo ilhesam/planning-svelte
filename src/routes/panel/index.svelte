@@ -1,5 +1,19 @@
 <script lang="ts">
   import { PageHeader, PageBody } from "$components";
+  import { serviceOptions, TargetsService, type Target } from "$api";
+  import { onMount } from "svelte";
+import axios from "axios";
+
+  let targets: Target[] = []
+
+  onMount(async () => {
+    serviceOptions.axios = axios.create({
+      baseURL: 'http://localhost:13527'
+    })
+    var response = await TargetsService.search({ body: {} })
+    console.log(response)
+    targets = response.data ?? []
+  })
 </script>
 
 <PageHeader>
@@ -28,46 +42,30 @@
         </div>
         <div class="card-body p-0">
           <div class="list-group list-group-flush border-bottom">
-            <div class="list-group-item">
-              <div class="row align-items-center">
-                <div class="col text-truncate">
-                  <a href="/targets/reading-books" class="text-reset d-block"
-                    >Reading Books - 3000 pages</a
-                  >
-                  <div class="d-block text-muted text-truncate mt-1">
-                    at least 3000 pages (about 10 pages daily)
+            {#each targets as target}
+              <div class="list-group-item">
+                <div class="row align-items-center">
+                  <div class="col text-truncate">
+                    <a href="/targets/reading-books" class="text-reset d-block"
+                      >{target.title} - {target.goal} pages</a
+                    >
+                    <div class="d-block text-muted text-truncate mt-1">
+                      {target.description}
+                    </div>
+                    <div class="progress progress-xl mt-3">
+                      <div
+                        class="progress-bar"
+                        style="width: 38%"
+                        role="progressbar"
+                      />
+                    </div>
+                    <div class="float-end mt-2">
+                      0% - {target.progress} pages
+                    </div>
                   </div>
-                  <div class="progress progress-xl mt-3">
-                    <div
-                      class="progress-bar"
-                      style="width: 38%"
-                      role="progressbar"
-                    />
-                  </div>
-                  <div class="float-end mt-2">38% - 3000 pages</div>
-                </div>                
+                </div>
               </div>
-            </div>
-            <div class="list-group-item">
-              <div class="row align-items-center">
-                <div class="col text-truncate">
-                  <a href="/targets/reading-books" class="text-reset d-block"
-                    >Reading Books - 3000 pages</a
-                  >
-                  <div class="d-block text-muted text-truncate mt-1">
-                    at least 3000 pages (about 10 pages daily)
-                  </div>
-                  <div class="progress progress-xl mt-3">
-                    <div
-                      class="progress-bar"
-                      style="width: 50%"
-                      role="progressbar"
-                    />
-                  </div>
-                  <div class="float-end mt-2">50% - 3000 pages</div>
-                </div>                
-              </div>
-            </div>
+            {/each}
           </div>
         </div>
       </div>
