@@ -2,8 +2,14 @@
 	"name": "planning-svelte",
 	"version": "0.0.1",
 	"scripts": {
+		"api:generate": "node ./scripts/api.generate.js",
 		"dev": "svelte-kit dev",
-		"api:generate": "node ./scripts/api.generate.js"
+		"build": "svelte-kit build",
+		"package": "svelte-kit package",
+		"preview": "svelte-kit preview",
+		"prepare": "svelte-kit sync",
+		"check": "svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "next",
@@ -11,13 +17,14 @@
 		"svelte": "^3.44.0",
 		"svelte-check": "^2.2.6",
 		"svelte-preprocess": "^4.10.1",
+		"swagger-axios-codegen": "^0.12.10",
 		"tslib": "^2.3.1",
-		"typescript": "~4.6.2",
-		"swagger-axios-codegen": "^0.12.10"
+		"typescript": "~4.6.2"
 	},
 	"type": "module",
 	"dependencies": {
 		"@tabler/core": "^1.0.0-beta9",
-		"autoprefixer": "^10.4.7"
+		"autoprefixer": "^10.4.7",
+		"axios": "^0.27.2"
 	}
 }
