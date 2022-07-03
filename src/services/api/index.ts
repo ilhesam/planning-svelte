@@ -165,6 +165,27 @@ export class TargetsService {
       axios(configs, resolve, reject);
     });
   }
+  /**
+   *
+   */
+  static delete(
+    params: {
+      /** requestBody */
+      body?: IdRequest;
+    } = {} as any,
+    options: IRequestOptions = {}
+  ): Promise<IResult> {
+    return new Promise((resolve, reject) => {
+      let url = basePath + '/API/Targets/Delete';
+
+      const configs: IRequestConfig = getConfigs('post', 'application/json', url, options);
+
+      let data = params.body;
+
+      configs.data = data;
+      axios(configs, resolve, reject);
+    });
+  }
 }
 
 export interface Error {
@@ -222,6 +243,9 @@ export interface Target {
   timeline?: Timeline;
 
   /**  */
+  type?: TargetType;
+
+  /**  */
   priority?: number;
 
   /**  */
@@ -274,10 +298,16 @@ export interface TargetRequest {
   timeline?: Timeline;
 
   /**  */
+  type?: TargetType;
+
+  /**  */
   priority?: number;
 
   /**  */
   metric?: string;
+
+  /**  */
+  progress?: number;
 
   /**  */
   goal?: number;
@@ -339,3 +369,5 @@ export interface Timeline {
   /**  */
   to?: Date;
 }
+
+export type TargetType = 0 | 1;
